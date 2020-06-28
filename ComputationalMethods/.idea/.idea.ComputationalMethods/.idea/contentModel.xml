@@ -6,6 +6,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="com.Github.Haseoo.ComputationalMethods.csproj" t="IncludeRecursive" />
         <e p="Math.cs" t="Include" />
+        <e p="MathUtils.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
