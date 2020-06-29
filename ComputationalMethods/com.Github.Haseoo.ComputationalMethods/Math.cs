@@ -35,7 +35,7 @@ namespace com.Github.Haseoo.ComputationalMethods
             return returnValue * h;
         }
         
-        public static double[] Lagrange(double[] x, double[] y)
+        public static double[] LagrangeInterpolation(double[] x, double[] y)
         {
             var result = new double[x.Length];
             for (var i = 0; i < x.Length; i++)

@@ -3,6 +3,7 @@
   <component name="ContentModelStore">
     <e p="C:\GitHub\Computational-Methods\ComputationalMethods" t="IncludeFlat">
       <e p="com.Github.Haseoo.ComputationalMethods" t="IncludeRecursive">
+        <e p="Approximation.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="com.Github.Haseoo.ComputationalMethods.csproj" t="IncludeRecursive" />
         <e p="Math.cs" t="Include" />
