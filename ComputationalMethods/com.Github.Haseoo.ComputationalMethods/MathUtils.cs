@@ -14,5 +14,22 @@
             }
             return result;
         }
+        
+        public static double[,] GetDiffTable(double[] x, double[] y)
+        {
+            var diffTable = new double[x.Length, y.Length];
+            for (var i = 0; i < y.Length; i++)
+            {
+                diffTable[i, 0] = y[i];
+            }
+            for (var i = 1; i <= y.Length - 1; i++)
+            {
+                for (var j = y.Length - 1; j >= i; j--)
+                {
+                    diffTable[j, i] = diffTable[j, i - 1] - diffTable[j - 1, i - 1];
+                }
+            }
+            return diffTable;
+        }
     }
 }

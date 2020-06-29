@@ -57,5 +57,16 @@ namespace com.Github.Haseoo.ComputationalMethods
             }
             return result;
         }
+        
+        public static double TaylorDifferentiation(double[] x, double[] y, double h)
+        {
+            var diffTable = GetDiffTable(x, y);
+            var retVal = 0.0;
+            for (var i = 1; i < y.Length; i++)
+            {
+                retVal += (1.0 / i) * diffTable[y.Length - 1, i];
+            }
+            return retVal * (1.0 / h);
+        }
     }
 }
