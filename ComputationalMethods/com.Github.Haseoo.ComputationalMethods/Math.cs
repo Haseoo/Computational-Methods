@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 
 using static com.Github.Haseoo.ComputationalMethods.MathUtils;
+using static System.Math;
 
 namespace com.Github.Haseoo.ComputationalMethods
 {
@@ -67,6 +68,27 @@ namespace com.Github.Haseoo.ComputationalMethods
                 retVal += (1.0 / i) * diffTable[y.Length - 1, i];
             }
             return retVal * (1.0 / h);
+        }
+        
+        public static double[] GaussElimination(double[,] inMatrix) {
+            var n = inMatrix.GetLength(0);
+            var retVal = new double[n];
+            for (var i = 0; i < n - 1; i++) {
+                for (var j = i + 1; j < n; j++) {
+                    if (Abs(inMatrix[i,i]) < 0.0) return null;
+                    var m = -inMatrix[j, i] / inMatrix[i, i];
+                    for (var k = i + 1; k <= n; k++)
+                        inMatrix[j, k] += m * inMatrix[i, k];
+                }
+            }
+            for (var i = n - 1; i >= 0; i--) {
+                var s = inMatrix[i, n];
+                for (var j = n - 1; j >= i + 1; j--)
+                    s -= inMatrix[i, j] * retVal[j];
+                if (Abs(inMatrix[i, i]) < 0.0) return null;
+                retVal[i] = s / inMatrix[i, i];
+            }
+            return retVal;
         }
     }
 }
