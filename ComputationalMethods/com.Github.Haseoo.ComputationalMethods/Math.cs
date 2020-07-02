@@ -90,5 +90,20 @@ namespace com.Github.Haseoo.ComputationalMethods
             }
             return retVal;
         }
+        
+        public static double? FindRootBisection(Func<double, double> f, double a, double b, double eps) {
+            if (f(a) * f(b) > 0) {
+                return null;
+            }
+            var c = 0.0;
+            while (b - a > eps) {
+                c = (a + b) / 2;
+                if (f(a) * f(c) < 0)
+                    b = c;
+                else
+                    a = c;
+            }
+            return c;
+        }
     }
 }
