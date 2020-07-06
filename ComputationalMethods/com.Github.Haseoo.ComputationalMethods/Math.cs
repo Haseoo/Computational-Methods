@@ -105,5 +105,43 @@ namespace com.Github.Haseoo.ComputationalMethods
             }
             return c;
         }
+        
+        private static double Fibonacci(int n) {
+            var a = 0;
+            var b = 1;
+            for (var i = 0; i < n; i++)
+            {
+                var temp = a;
+                a = b;
+                b = temp + b;
+            }
+            return a;
+        }
+        
+        public static double FindMin(Func<double, double> f, double a, double b, double eta) {
+            var max = (b - a) / eta;
+            var k = 0.0;
+            var it = 0;
+            while(true)
+            {
+                if (Fibonacci(it) > max) {
+                    k = it;
+                    break;
+                }
+                it++;
+            }
+            var c = b - (Fibonacci((int)(k - 1)) / Fibonacci((int)k)) * (b - a);
+            var d = a + b - c;
+            for (var i = 0; i < k - 4; i++) {
+                if (f(c) < f(d)) {
+                    b = d;
+                } else {
+                    a = c;
+                }
+                c = b - (Fibonacci((int)(k - i - 2)) / Fibonacci((int)(k - i - 1))) * (b - a);
+                d = a + b - c;
+            }
+            return c;
+        }
     }
 }
