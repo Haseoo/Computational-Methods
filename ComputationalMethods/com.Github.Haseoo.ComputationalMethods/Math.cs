@@ -143,5 +143,30 @@ namespace com.Github.Haseoo.ComputationalMethods
             }
             return c;
         }
+
+        public static double[] RunyKutty(Func<double, double, double> f, double x0, double xn, double y0, double h)
+        {
+            var n = (int) (System.Math.Abs(x0 - xn) / h + 1);
+            var retVal = new double[n];
+            var y = y0;
+            var x = x0;
+
+            for (var i = 0; i < n; ++i)
+            {
+                var k = h * f(x, y);
+                var dy = h;
+                k = h * f((x + 0.5) * h, (y + 0.5) * k);
+                dy += 2 * k;
+                k = h * f((x + 0.5) * h, (y + 0.5) * k);
+                dy += 2 * k;
+                k = h * f(x + h, y + k);
+                dy += k;
+                dy /= 6.0;
+                retVal[i] = dy;
+                y += dy;
+                x += h;
+            }
+            return retVal;
+        }
     }
 }
